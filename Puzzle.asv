@@ -1,0 +1,5 @@
+matris=[2,3,0;1,2,5;6,7,8];
+goal_matris=[1,2,3;8,0,4;7,6,5];
+[ problem ] = Problem_formulation( matris,goal_matris);
+[ goal ] = Goal_formulation( goal_matris );
+[ solution ] = Search(problem,goal);

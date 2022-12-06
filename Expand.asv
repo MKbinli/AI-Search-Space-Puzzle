@@ -1,0 +1,152 @@
+function [ y ] = Expand( node,goal )
+%0=baslangýc
+%1=sola hareket
+%2=saða haraket
+%3=yu
+%
+i=1;
+[row,col]=find(node.matris==0);
+x=goal.matris;
+if(row==1)
+    if(isequal(node.yon,3))
+        node.hx=100;
+    end
+    new{i}.matris=node.matris;
+    new{i}.matris(row+1,col)=node.matris(row,col);
+    new{i}.matris(row,col)=node.matris(row+1,col);
+    new{i}.durum=node.durum+i;
+    new{i}.parent=node.parent+1;
+    new{i}.depth=node.depth+1;
+    new{i}.cost=node.cost+1;
+    new{i}.yon=4;
+    matris=new{i}.matris;
+    new{i}.hx=h(matris,x);
+    i=i+1;
+end
+if(row==2)
+    if(isequal(node.yon,3))
+        node.hx=100;
+    end
+    new{i}.matris=node.matris;
+    new{i}.matris(row+1,col)=node.matris(row,col);
+    new{i}.matris(row,col)=node.matris(row+1,col);
+    new{i}.durum=node.durum+i;
+    new{i}.parent=node.parent+1;
+    new{i}.depth=node.depth+1;
+    new{i}.cost=node.cost+1;
+    new{i}.yon=4;
+    matris=new{i}.matris;
+    new{i}.hx=h(matris,x);
+    i=i+1;
+    if(isequal(node.yon,4))
+        node.hx=100;
+    end
+    new{i}.matris=node.matris;
+    new{i}.matris(row-1,col)=node.matris(row,col);
+    new{i}.matris(row,col)=node.matris(row-1,col);
+    new{i}.durum=node.durum+i;
+    new{i}.parent=node.parent+1;
+    new{i}.depth=node.depth+1;
+    new{i}.cost=node.cost+1;
+    new{i}.yon=3;
+    matris=new{i}.matris;
+    new{i}.hx=h(matris,x);
+    i=i+1;
+end
+if(row==3)
+    if(isequal(node.yon,4))
+        node.hx=100;
+    end
+    new{i}.matris=node.matris;
+    new{i}.matris(row-1,col)=node.matris(row,col);
+    new{i}.matris(row,col)=node.matris(row-1,col);
+    new{i}.durum=node.durum+i;
+    new{i}.parent=node.parent+1;
+    new{i}.depth=node.depth+1;
+    new{i}.cost=node.cost+1;
+    new{i}.yon=3;
+    matris=new{i}.matris;
+    new{i}.hx=h(matris,x);
+    i=i+1;
+end
+if(col==1)
+    if(isequal(node.yon,1))
+        node.hx=100;
+    end
+    new{i}.matris=node.matris;
+    new{i}.matris(row,col+1)=node.matris(row,col);
+    new{i}.matris(row,col)=node.matris(row,col+1);
+    new{i}.durum=node.durum+i;
+    new{i}.parent=node.parent+1;
+    new{i}.depth=node.depth+1;
+    new{i}.cost=node.cost+1;
+    node.yon=2;
+    matris=new{i}.matris;
+    new{i}.hx=h(matris,x);
+    i=i+1;
+end
+if(col==2)
+    if(isequal(node.yon,1))
+        node.hx=100;
+    end
+    new{i}.matris=node.matris;
+    new{i}.matris(row,col+1)=node.matris(row,col);
+    new{i}.matris(row,col)=node.matris(row,col+1);
+    new{i}.durum=node.durum+i;
+    new{i}.parent=node.parent+1;
+    new{i}.depth=node.depth+1;
+    new{i}.cost=node.cost+1;
+    node.yon=2;
+    matris=new{i}.matris;
+    new{i}.hx=h(matris,x);
+    i=i+1;
+    if(isequal(node.yon,2))
+        node.hx=100;
+    end
+    new{i}.matris=node.matris;
+    new{i}.matris(row,col-1)=node.matris(row,col);
+    new{i}.matris(row,col)=node.matris(row,col-1);
+    new{i}.durum=node.durum+i;
+    new{i}.parent=node.parent+1;
+    new{i}.depth=node.depth+1;
+    new{i}.cost=node.cost+1;
+    node.yon=1;
+    matris=new{i}.matris;
+    new{i}.hx=h(matris,x);
+    i=i+1;
+end
+if(col==3)
+    if(isequal(node.yon,2))
+        node.hx=100;
+    end
+    new{i}.matris=node.matris;
+    new{i}.matris(row,col-1)=node.matris(row,col);
+    new{i}.matris(row,col)=node.matris(row,col-1);
+    new{i}.durum=node.durum+i;
+    new{i}.parent=node.parent+1;
+    new{i}.depth=node.depth+1;
+    new{i}.cost=node.cost+1;
+    node.yon=1;
+    matris=new{i}.matris;
+    new{i}.hx=h(matris,x);
+    i=i+1;
+end
+i=i-1;
+minposition=1;
+    
+for j=2:1:i
+    m=new{j}.hx+new{j}.cost;
+    n=new{minposition}.hx+new{minposition}.cost;
+    if(lt(m,n))
+        minposition=j;
+    end
+end
+
+    y.hx=new{minposition}.hx;
+    y.matris=new{minposition}.matris;
+    y.durum=new{minposition}.durum;
+    y.parent=new{minposition}.parent;
+    y.depth=new{minposition}.depth;
+    y.cost=new{minposition}.cost;
+end
+

@@ -1,0 +1,39 @@
+function [  ] = Sorting_cell( cells )
+for k=1:1:numel(cells)
+minposition=1;
+    
+for j=2:1:numel(cells)
+    m=cells{j}.fx;
+    n=cells{minposition}.fx;
+    if(lt(m,n))
+        minposition=j;
+    end
+end
+tmp=cells{k};
+new{k}=new{minposition};
+new{minposition}=tmp;
+end
+
+
+end
+
+void selectionSort(float array[], int size)
+{
+   int j, k;
+   int maxPosition;
+   float tmp;
+
+   for (k = size-1; k > 0; k--) {
+      maxPosition = 0;
+
+      for (j = 1; j <= k; j++) {
+         if (array[j] > array[maxPosition])
+         {
+            maxPosition = j;
+         }
+      }
+      tmp = array[k];
+      array[k] = array[maxPosition];
+      array[maxPosition] = tmp;
+   }
+}
