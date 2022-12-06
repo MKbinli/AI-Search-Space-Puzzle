@@ -1,32 +1,4 @@
 classdef CList < handle
-% 定义了一个（有序的）列表
-% list = CList; 定义一个空的队列对象
-% list = CList(c); 定义队列对象，并用c初始化q，当c为cell时，c的元素为栈的数据，
-%    否则c本身为栈的第一个数据
-%
-% 支持操作：
-%     sz = list.size() 返回队列内元素个数，也可用来判断队列是否非空。
-%     b = list.empty() 清空队列
-%     list.pushtofront(el) 将新元素el压入列表头
-%     list.pushtorear(el) 将新元素el压入列表尾部
-%     el = list.popfront()  弹出列表头部元素，用户需自己确保队列非空
-%     el = list.poprear() 弹出列表尾部元素，用户需自己确保列表非空
-%     el = list.front() 返回队首元素，用户需自己确保队列非空
-%     el = list.back() 返回队尾元素，用户需自己确保队列非空
-%     list.remove(k) 删除第k个元素，如果k为负的，则从尾部开始算 
-%     list.removeall() 删除队列所有元素
-%     list.add(el, k) 插入元素el到第k个位置，如果k为负的，则从结尾开始算
-%     list.contains(el) 检查el是否出现在列表中，如果出现，返回第一个下标
-%     list.get(k) 返回列表制定位置的元素，如果k为负的，则从末尾开始算
-%     list.sublist(from, to) 返回列表中从from到to（左开右闭）之间的视图
-%     list.content() 返回列表的数据，以一维cells数组的形式返回。
-%     list.toarray() = list.content() content的别名
-%
-% See also CStack
-%
-% copyright: zhangzq@citics.com, 2010.
-% url: http://zhiqiang.org/blog/tag/matlab
-
     properties (Access = private)
         buffer      % 一个cell数组，保存栈的数据
         beg         % 队列起始位置

@@ -1,11 +1,5 @@
 function [ y ] = Expand( node,goal )
-%yonler:eger tekrar ayný node'u sececekse cocuk node u secmemesi icin
-%0=baslangýc
-%1=sola hareket
-%2=saða haraket
-%3=yukarý hareket
-%4=asagý hareket
-%doruluk=1|0
+
 i=1;
 [row,col]=find(node.matris==0);
 x=goal.matris;
